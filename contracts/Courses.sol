@@ -88,7 +88,13 @@ function withdrawCourse(bytes32 courseHash,bytes32 proof,uint amount) external p
   payable(msg.sender).transfer(amount);
 
   }
-
+address [] funders;
+uint totalFunders;
+function addFunds() external payable returns(uint){
+  funders.push(msg.sender);
+  return ++totalFunders;
+  
+}
 function deactivateCourse(bytes32 courseHash) external payable{
 
  Course memory course =ownedCourses[courseHash];
